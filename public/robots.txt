@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /aviso-legal
+Disallow: /politica-privacidad
+Disallow: /politica-cookies
+
+Sitemap: https://calcfiscal.es/sitemap.xml
