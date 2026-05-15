@@ -60,6 +60,6 @@ export function getGuideBySlug(slug: string, type: "guias" | "blog" = "guias"): 
 export function getAllGuides(type: "guias" | "blog" = "guias"): GuideMetadata[] {
   return getAllSlugs(type)
     .map((slug) => getGuideBySlug(slug, type))
-    .filter(Boolean)
-    .map(({ content, ...meta }) => meta) as GuideMetadata[]
+    .filter((g): g is Guide => g !== null)
+    .map(({ content: _content, ...meta }) => meta)
 }
