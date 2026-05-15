@@ -11,6 +11,9 @@ export interface GuideMetadata {
   author: string
   keywords: string[]
   relatedTools?: string[]
+  relatedGuides?: string[]
+  category?: string
+  readingTime?: number
 }
 
 export interface Guide extends GuideMetadata {
@@ -53,6 +56,9 @@ export function getGuideBySlug(slug: string, type: "guias" | "blog" = "guias"): 
     author: data.author || "Equipo CalcFiscal",
     keywords: data.keywords || [],
     relatedTools: data.relatedTools || [],
+    relatedGuides: data.relatedGuides || [],
+    category: data.category || undefined,
+    readingTime: data.readingTime || undefined,
     content,
   }
 }

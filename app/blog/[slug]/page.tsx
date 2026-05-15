@@ -52,8 +52,8 @@ export default async function BlogPostPage({ params }: Props) {
         datePublished={post.datePublished}
         dateModified={post.dateModified}
         author={post.author}
-        category={(post as any).category}
-        readingTime={(post as any).readingTime}
+        category={post.category}
+        readingTime={post.readingTime}
         relatedTools={post.relatedTools}
       >
         <div dangerouslySetInnerHTML={{ __html: post.content }} />

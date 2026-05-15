@@ -53,6 +53,7 @@ export default async function GuidePage({ params }: Props) {
         author={guide.author}
         breadcrumb={[{ name: "Guías", href: "/guias" }]}
         relatedTools={guide.relatedTools}
+        relatedGuides={guide.relatedGuides}
       >
         <div dangerouslySetInnerHTML={{ __html: guide.content }} />
       </GuideLayout>

@@ -15,6 +15,7 @@ interface GuideLayoutProps {
   author: string
   breadcrumb: { name: string; href: string }[]
   relatedTools?: string[]
+  relatedGuides?: string[]
   children: React.ReactNode
 }
 
@@ -24,6 +25,25 @@ const TOOL_MAP: Record<string, { title: string; emoji: string }> = {
   "calculadora-cuota-autonomos": { title: "Cuota Autónomos 2026", emoji: "🧾" },
   "calculadora-irpf-autonomos": { title: "IRPF Autónomos", emoji: "📈" },
   "calculadora-finiquito": { title: "Calculadora Finiquito", emoji: "📋" },
+  "calculadora-paro": { title: "Calculadora Paro", emoji: "📉" },
+  "calculadora-hipoteca": { title: "Calculadora Hipoteca", emoji: "🏠" },
+}
+
+const GUIDE_MAP: Record<string, { title: string }> = {
+  "cuota-autonomos-2026": { title: "Cuota autónomos 2026" },
+  "como-calcular-sueldo-neto": { title: "Cómo calcular el sueldo neto" },
+  "como-darse-de-alta-autonomo": { title: "Alta como autónomo" },
+  "gastos-deducibles-autonomos": { title: "Gastos deducibles autónomos" },
+  "como-calcular-finiquito": { title: "Cómo calcular el finiquito" },
+  "como-calcular-prestacion-paro": { title: "Cómo calcular la prestación por paro" },
+  "declaracion-renta-2026": { title: "Declaración de la Renta 2026" },
+  "modelo-303-iva-autonomos": { title: "Modelo 303 IVA autónomos" },
+  "como-calcular-hipoteca": { title: "Cómo calcular una hipoteca" },
+  "irpf-autonomos-2026": { title: "IRPF para autónomos 2026" },
+  "tabla-irpf-2026": { title: "Tabla IRPF 2026" },
+  "indemnizacion-despido-españa": { title: "Indemnización por despido" },
+  "como-hacer-factura-autonomo": { title: "Cómo hacer una factura como autónomo" },
+  "tipos-contrato-trabajo-españa": { title: "Tipos de contrato de trabajo en España" },
 }
 
 export function GuideLayout({
@@ -34,11 +54,16 @@ export function GuideLayout({
   author,
   breadcrumb,
   relatedTools = [],
+  relatedGuides = [],
   children,
 }: GuideLayoutProps) {
   const resolvedTools = relatedTools
     .map((slug) => TOOL_MAP[slug] ? { href: `/herramientas/${slug}`, ...TOOL_MAP[slug] } : null)
     .filter(Boolean) as RelatedTool[]
+
+  const resolvedGuides = relatedGuides
+    .map((slug) => GUIDE_MAP[slug] ? { href: `/guias/${slug}`, title: GUIDE_MAP[slug].title } : null)
+    .filter(Boolean) as { href: string; title: string }[]
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
@@ -96,6 +121,21 @@ export function GuideLayout({
                         <span>{tool.emoji}</span>
                         <span>{tool.title}</span>
                       </Link>
+                    </li>
+                  ))}
+                </ul>
+              </CardBody>
+            </Card>
+          )}
+
+          {resolvedGuides.length > 0 && (
+            <Card>
+              <CardBody className="p-5">
+                <h3 className="font-semibold text-gray-900 mb-3 text-sm">Guías relacionadas</h3>
+                <ul className="space-y-2 text-sm">
+                  {resolvedGuides.map((guide) => (
+                    <li key={guide.href}>
+                      <Link href={guide.href} className="text-blue-600 hover:underline">→ {guide.title}</Link>
                     </li>
                   ))}
                 </ul>

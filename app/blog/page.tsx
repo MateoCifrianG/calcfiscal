@@ -51,9 +51,9 @@ export default function BlogPage() {
             {posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                 <article className="border border-gray-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-md transition-all">
-                  {(post as any).category && (
+                  {post.category && (
                     <span className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full mb-3">
-                      {(post as any).category}
+                      {post.category}
                     </span>
                   )}
                   <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors leading-snug">
@@ -62,7 +62,7 @@ export default function BlogPage() {
                   <p className="text-gray-500 text-sm mb-4 line-clamp-2">{post.description}</p>
                   <div className="flex items-center gap-3 text-xs text-gray-400">
                     <span>{new Date(post.datePublished).toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}</span>
-                    {(post as any).readingTime && <span>· {(post as any).readingTime} min</span>}
+                    {post.readingTime && <span>· {post.readingTime} min</span>}
                   </div>
                 </article>
               </Link>
