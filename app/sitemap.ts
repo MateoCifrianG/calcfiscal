@@ -5,12 +5,20 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calcfiscal.vercel.
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guiaSlugs = getAllSlugs("guias")
+  const blogSlugs = getAllSlugs("blog")
 
   const guias = guiaSlugs.map((slug) => ({
     url: `${SITE_URL}/guias/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
+  }))
+
+  const blogPosts = blogSlugs.map((slug) => ({
+    url: `${SITE_URL}/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }))
 
   return [
@@ -75,6 +83,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...guias,
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...blogPosts,
     {
       url: `${SITE_URL}/sobre-nosotros`,
       lastModified: new Date(),
