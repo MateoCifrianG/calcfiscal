@@ -17,6 +17,7 @@ const HERRAMIENTAS = [
     items: [
       { emoji: "💼", title: "Calculadora Sueldo Neto", desc: "De bruto a neto en segundos. IRPF y Seguridad Social 2026.", href: "/herramientas/calculadora-sueldo-neto", badge: "Más usada" },
       { emoji: "📋", title: "Calculadora Finiquito", desc: "Calcula la indemnización y partes proporcionales.", href: "/herramientas/calculadora-finiquito", badge: null },
+      { emoji: "📉", title: "Calculadora de Paro", desc: "Duración y cuantía de la prestación por desempleo.", href: "/herramientas/calculadora-paro", badge: "Nuevo" },
     ],
   },
   {
@@ -37,10 +38,10 @@ const HERRAMIENTAS = [
     ],
   },
   {
-    categoria: "Modelos y Trámites",
-    emoji: "📝",
+    categoria: "Financiero",
+    emoji: "🏠",
     items: [
-      { emoji: "📝", title: "Simulador Modelo 303", desc: "Estima tu liquidación trimestral de IVA.", href: "/herramientas/simulador-modelo-303", badge: "Próximamente" },
+      { emoji: "🏠", title: "Calculadora de Hipoteca", desc: "Cuota mensual, total de intereses y coste real del préstamo.", href: "/herramientas/calculadora-hipoteca", badge: "Nuevo" },
       { emoji: "📅", title: "Calendario Fiscal 2026", desc: "Todos los plazos fiscales del año en un solo lugar.", href: "/herramientas/calendario-fiscal", badge: "Próximamente" },
     ],
   },
