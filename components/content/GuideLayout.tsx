@@ -14,7 +14,7 @@ interface GuideLayoutProps {
   dateModified: string
   author: string
   breadcrumb: { name: string; href: string }[]
-  relatedTools?: RelatedTool[]
+  relatedTools?: string[]
   children: React.ReactNode
 }
 
